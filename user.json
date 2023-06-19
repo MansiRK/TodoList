@@ -1,0 +1,62 @@
+[
+    {
+        "name": "mansi",
+        "email": "mansi@gmail.com",
+        "hashed_password": "$2a$10$fLCkNLuRByVuFpcRmRdG2.kq8ZoDpRQICEZe2MCU7zkO8.riw9bDO"
+    },
+    {
+        "name": "ayush",
+        "email": "ayush@gmail.com",
+        "hashed_password": "$2a$10$fMiNXH9Dlme4gUmtmj0YougukkGgZnvS/ua6wly4Ew0zWDiw4H0gS"
+    },
+    {
+        "name": "puja1",
+        "email": "puja@gmail.com",
+        "hashed_password": "$2a$10$V.cttGShvu0wvmkq8HEeQe4Y2GGx2UqYCkiybPsgWXnn12TCRA7nC"
+    },
+    {
+        "name": "priyanka",
+        "email": "priyanka@gmail.com",
+        "hashed_password": "$2a$10$nlAUZ40T9H8UQf6jdcaaCemaTSMAJjFY/OserFAdZ7N4JqnlhEgAy"
+    },
+    {
+        "name": "kiran",
+        "email": "kiran@gmail.com",
+        "hashed_password": "$2a$10$MDiQ62s0wWiYp7y5kPczFeM7IJKwPm3UVSJIlaX2yWJriSB10kr9y"
+    },
+    {
+        "name": "sujata",
+        "email": "sujata@gmail.com",
+        "hashed_password": "$2a$10$/vPtoVDh2MbOoz5/IUjJ1.GnfxsEC0yjBAyY.OAg3Z1jUTEEbnIpy"
+    },
+    {
+        "name": "manisha",
+        "email": "manisha@gmail.com",
+        "hashed_password": "$2a$10$6SMp2/j9V4jihW6Cje.z0OzHSdz7mLAR/wDEEJPiJzkmaRsmv4.Je"
+    },
+    {
+        "name": "mohan",
+        "email": "mohan@gmail.com",
+        "hashed_password": "$2a$10$W2PcdtfTI7oEXQMkwktgseidquQDf6W0wyhRwHMsZ1WBc.q8DktfK"
+    },
+    {
+        "name": "sai123",
+        "email": "sai@gmail.com",
+        "hashed_password": "$2a$10$/flNWXnG.AlAnB6axYl42.i/jntXugBjynF3wJKOyyxnOJx/Vk/dK"
+    },
+    {
+        "name": "simran",
+        "email": "simaran@gmail.com",
+        "hashed_password": "$2a$10$63Inenpnhb0Ufw5ewIz75uncv8b3mTcIbwi.LPgPNiM7d1ADM5Ndq"
+    },
+    {
+        "name": "soham",
+        "email": "soham@gmail.com",
+        "hashed_password": "$2a$10$G8iOiohugHqeM3dg76zTZOehcEV7tuo9wbtenoQ3QRMhJ.UCdACkq"
+    },
+    {
+        "name": "mohit",
+        "email": "mohit@gmail.com",
+        "hashed_password": "$2a$10$HWh8cG3HxGWLjHyMTWMSL.DEgR.RZd9kYjlr2e4A7gqGq1M3GhNfq"
+    }
+]
