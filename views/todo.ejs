@@ -1,0 +1,159 @@
+<%- include("partials/header") %>
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col">
+                <h3>Modify your todo</h3>
+                <% if(todo) { %>
+                    <form id="todoUpdateForm">
+                        <div class="mb-3">
+                            <label class="form-label" for="title">
+                                Enter Title:
+                            </label>
+                            <input type="text" id="title" class="form-control" placeholder="write something..." readonly
+                                required value="<%=todo.title%>">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="description">
+                                Enter Description:
+                            </label>
+                            <textarea class="form-control" id="description" rows="3"
+                                required><%=todo.description%></textarea>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="completed" id="completedDone"
+                                <%=todo.completed ? "checked" : "" %> />
+
+                            <label class="form-check-label" for="completedDone">
+                                Mark Done
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="completed" id="completedNotDone" checked>
+
+                            <label class="form-check-label" for="completedNotDone" <%=todo.completed ? "" : "checked"
+                                %>/>
+                                Mark UnDone
+                            </label>
+                        </div>
+
+                        <div class="text-center" style="width: 100%;">
+                            <input class="btn btn-primary" type="submit" value="Modify" />
+                            <button type="button" onclick="deleteTodo(`<%=todo.title%>`)"
+                                class="btn btn-danger">Delete</button>
+                        </div>
+                        </hr>
+                    </form>
+
+                    <% } else { %>
+                        <h1>Not Found</h1>
+                        <a href="/todos/add" class="my-1 btn btn-outline-primary">Try adding a new Todo...</a>
+                        <% } %>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        document.getElementById("todoUpdateForm").addEventListener("submit", function (event) {
+            event.preventDefault()
+            console.log("---event---")
+
+            const title = document.getElementById("title").value
+            const description = document.getElementById("description").value
+            const completed = document.getElementById("completedDone")
+
+            let token = localStorage.getItem("access_token")
+
+            const body = {
+                title,
+                description,
+                completed: completedDone.checked ? true : false
+            }
+
+            //for protected route
+            fetch(
+                `/api/v1/todos/${title}`,
+                {
+                    method: "PUT",
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-Type": "application/json",
+                        "Authorization": token
+                    },
+                    body: JSON.stringify(body)
+                }
+            )
+                // .then((response) => response.json())
+                // .then((data) => alert (data.message))
+                // .then((error) => alert (error.toString()))
+                .then((response) => {
+                    console.log("----Token response-----", token, response.status)
+
+                    return response.json()
+                        .then((data) => {
+                            if (data.redirect) {
+                                alert("You are not logged in, redirecting to login page.")
+                                window.location.href = "/auth/login"
+                                // const errorString = JSON.stringify(data.error)
+                                return
+                            }
+                            if (data.error) {
+                                const errorString = JSON.stringify(data.error)
+                                alert("Error" + errorString)
+                            } else {
+                                alert(data.message)
+
+                                location.reload()
+                            }
+                        })
+                })
+
+                // .then((data) => alert(data.message))
+                .catch((error) => {
+                    console.log(alert(error.toString()))
+
+                })
+
+        })
+
+        function deleteTodo(todo_title) {
+            console.log("Delete task?", todo_title);
+
+            let token = localStorage.getItem("access_token")
+
+            fetch(
+                `/api/todos/${todo_title}`,
+                {
+                    method: "DELETE",
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-Type": "application/json",
+                        "Authorization": token
+                    },
+                    body: JSON.stringify(body)
+
+                })
+                .then((response) => {
+                    return response.json()
+                        .then((data) => {
+
+                            if (data.redirect) {
+                                alert("You are not logged in. So redirecting you to the login page")
+                                window.location.href = "/auth/login"
+                                return
+                            }
+
+                            alert(data.message)
+                            window.location.href = "/"
+                        })
+                })
+                .catch((error) => {
+                    console.log(alert(error.toString()))
+
+                })
+        }
+    </script>
+
+    <%- include("partials/footer") %>
